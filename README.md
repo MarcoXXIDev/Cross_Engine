@@ -1,6 +1,7 @@
-#Cross Engine for Friday Night Funkin'
+# Cross Engine for Friday Night Funkin'
 Here's another custom engine! Right now, there's nothing too interesting here. Ghost tapping, ratings, miss counting, custom health bar colors, all very simple. But soon I'll add more stuff to make modding easier. For now though, this is an engine for people who love the OG FNF, but like a few features from mods. Soon I'll also release a guide to adding characters, songs, charts and more, but if you really wanna get started right now, look at this guide: https://gamebanana.com/tuts/13798
-##How to install?
+
+## How to install?
 This is for compiling the game's source code. If ya just wanna play the game normally, I'll add a link on GameBanana. For now though, here's a link to the OG FNF:
 https://ninja-muffin24.itch.io/funkin
 
@@ -32,7 +33,7 @@ At the moment, you can optionally fix the transition bug in songs with zoomed-ou
 
 Run haxelib git flixel-addons https://github.com/HaxeFlixel/flixel-addons in the terminal/command-prompt.
 
-##How do I actually compile the game?
+## How do I actually compile the game?
 Well, it's pretty simple. At the root of the project, open Command Prompt, Power Shell, or whatever equivalent you have of that. Then run 
-lime test (whatever platform: mac, linux, windows, or html5) -debug. 
+`lime test (whatever platform: mac, linux, windows, or html5) -debug.`
 If you write anything other than -debug at the end, it'll be impossible to open up the HaxeFlixel debug menu :) Thanks for reading this
