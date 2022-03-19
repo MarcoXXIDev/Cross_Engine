@@ -1,0 +1,5 @@
+maze
+true
+idle
+Stage
+///

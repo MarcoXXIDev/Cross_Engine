@@ -13,10 +13,19 @@ typedef SwagSong =
 	var notes:Array<SwagSection>;
 	var bpm:Int;
 	var needsVoices:Bool;
+	var hasDialogue:Bool;
+	var songDamage:Float;
 	var speed:Float;
 
 	var player1:String;
 	var player2:String;
+
+	var stage:String;
+	var yoGF:String;
+	var artist:String;
+	var mod:String;
+	var noteStyle:String;
+
 	var validScore:Bool;
 }
 
@@ -26,21 +35,29 @@ class Song
 	public var notes:Array<SwagSection>;
 	public var bpm:Int;
 	public var needsVoices:Bool = true;
+	public var hasDialogue:Bool = false;
+	public var songDamage:Float = 0.04;
 	public var speed:Float = 1;
 
 	public var player1:String = 'bf';
 	public var player2:String = 'dad';
+	public var stage:String = 'stage';
+	public var yoGF:String = 'gf';
+	public var artist:String = 'kawaisprite';
+	public var mod:String = 'Basegame';
+	public var noteStyle:String = 'Default';
 
-	public function new(song, notes, bpm)
+	public function new(song, notes, bpm, mod)
 	{
 		this.song = song;
 		this.notes = notes;
 		this.bpm = bpm;
+		this.mod = mod;
 	}
 
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
 	{
-		var rawJson = Assets.getText(Paths.json(folder.toLowerCase() + '/' + jsonInput.toLowerCase())).trim();
+		var rawJson = Assets.getText(Paths.json('songs/' + folder.toLowerCase() + '/' + jsonInput.toLowerCase())).trim();
 
 		while (!rawJson.endsWith("}"))
 		{

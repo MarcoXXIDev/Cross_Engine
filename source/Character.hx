@@ -16,8 +16,21 @@ class Character extends FlxSprite
 
 	public var isPlayer:Bool = false;
 	public var curCharacter:String = 'bf';
+	public var curCharColorPath:String = '';
+	public var curCharColor:FlxColor;
+	public var pushback:Bool = false;
+	public var pushbackAmt:Float = 0;
+	public var pushbackLmt:Float = 0;
+	public var pushbackType:String = "";
+
+	public var charOffsetX:Float = 0;
+	public var charOffsetY:Float = 0;
 
 	public var holdTimer:Float = 0;
+
+	public var curCharPath:String = '';
+
+	var tempShit:String = "";
 
 	public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false)
 	{
@@ -27,6 +40,9 @@ class Character extends FlxSprite
 		curCharacter = character;
 		this.isPlayer = isPlayer;
 
+		charOffsetX = 0;
+		charOffsetY = 0;
+
 		var tex:FlxAtlasFrames;
 		antialiasing = true;
 
@@ -34,6 +50,7 @@ class Character extends FlxSprite
 		{
 			case 'gf':
 				// GIRLFRIEND CODE
+				curCharColor = 0xFFA5004D;
 				tex = Paths.getSparrowAtlas('GF_assets');
 				frames = tex;
 				animation.addByPrefix('cheer', 'GF Cheer', 24, false);
@@ -125,6 +142,7 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 			case 'dad':
+				curCharColor = 0xFFB066CF;
 				// DAD ANIMATION LOADING CODE
 				tex = Paths.getSparrowAtlas('DADDY_DEAREST');
 				frames = tex;
@@ -143,6 +161,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'spooky':
+				curCharColor = 0xFFD57E00;
 				tex = Paths.getSparrowAtlas('spooky_kids_assets');
 				frames = tex;
 				animation.addByPrefix('singUP', 'spooky UP NOTE', 24, false);
@@ -163,6 +182,7 @@ class Character extends FlxSprite
 				playAnim('danceRight');
 
 			case 'mom':
+				curCharColor = 0xFFD8558E;
 				tex = Paths.getSparrowAtlas('Mom_Assets');
 				frames = tex;
 
@@ -183,6 +203,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'mom-car':
+				curCharColor = 0xFFD8558E;
 				tex = Paths.getSparrowAtlas('momCar');
 				frames = tex;
 
@@ -203,6 +224,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'monster':
+				curCharColor = 0xFFF3FF6E;
 				tex = Paths.getSparrowAtlas('Monster_Assets');
 				frames = tex;
 				animation.addByPrefix('idle', 'monster idle', 24, false);
@@ -219,6 +241,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'monster-christmas':
+				curCharColor = 0xFFF3FF6E;
 				tex = Paths.getSparrowAtlas('christmas/monsterChristmas');
 				frames = tex;
 				animation.addByPrefix('idle', 'monster idle', 24, false);
@@ -235,6 +258,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'pico':
+				curCharColor = 0xFFB7D855;
 				tex = Paths.getSparrowAtlas('Pico_FNF_assetss');
 				frames = tex;
 				animation.addByPrefix('idle', "Pico Idle Dance", 24);
@@ -274,6 +298,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'bf':
+				curCharColor = 0xFF31B0D1;
 				var tex = Paths.getSparrowAtlas('BOYFRIEND');
 				frames = tex;
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
@@ -313,6 +338,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'bf-christmas':
+				curCharColor = 0xFF31B0D1;
 				var tex = Paths.getSparrowAtlas('christmas/bfChristmas');
 				frames = tex;
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
@@ -342,6 +368,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'bf-car':
+				curCharColor = 0xFF31B0D1;
 				var tex = Paths.getSparrowAtlas('bfCar');
 				frames = tex;
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
@@ -368,6 +395,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'bf-pixel':
+				curCharColor = 0xFF7BD6F6;
 				frames = Paths.getSparrowAtlas('weeb/bfPixel');
 				animation.addByPrefix('idle', 'BF IDLE', 24, false);
 				animation.addByPrefix('singUP', 'BF UP NOTE', 24, false);
@@ -420,6 +448,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'senpai':
+				curCharColor = 0xFFFFAA6F;
 				frames = Paths.getSparrowAtlas('weeb/senpai');
 				animation.addByPrefix('idle', 'Senpai Idle', 24, false);
 				animation.addByPrefix('singUP', 'SENPAI UP NOTE', 24, false);
@@ -441,6 +470,7 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 			case 'senpai-angry':
+				curCharColor = 0xFFFFAA6F;
 				frames = Paths.getSparrowAtlas('weeb/senpai');
 				animation.addByPrefix('idle', 'Angry Senpai Idle', 24, false);
 				animation.addByPrefix('singUP', 'Angry Senpai UP NOTE', 24, false);
@@ -461,6 +491,7 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 			case 'spirit':
+				curCharColor = 0xFFFF3C6E;
 				frames = Paths.getPackerAtlas('weeb/spirit');
 				animation.addByPrefix('idle', "idle spirit_", 24, false);
 				animation.addByPrefix('singUP', "up_", 24, false);
@@ -482,6 +513,7 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 			case 'parents-christmas':
+				curCharColor = 0xFFAF66CE;
 				frames = Paths.getSparrowAtlas('christmas/mom_dad_christmas_assets');
 				animation.addByPrefix('idle', 'Parent Christmas Idle', 24, false);
 				animation.addByPrefix('singUP', 'Parent Up Note Dad', 24, false);
@@ -506,24 +538,79 @@ class Character extends FlxSprite
 				addOffset("singDOWN-alt", -30, -27);
 
 				playAnim('idle');
+			default:
+				curCharColor = 0xFFBA7B42;
+				var curCharDataFile = CoolUtil.coolTextFile(Paths.txt('characters/' + curCharacter + '/char'));
+				var curTxt:Int = 0;
+				for (i in 0...curCharDataFile.length)
+				{
+					if (curCharDataFile[i].startsWith('//'))
+					{
 
-			case 'syksalar':
-				tex = Paths.getSparrowAtlas('syksalar/syksalar');
+					}
+					else
+					{
+						switch (curTxt)
+						{
+							case 0:
+								curCharColor = Std.parseInt(curCharDataFile[i]);
+							case 1:
+								charOffsetX = Std.parseFloat(curCharDataFile[i]);
+							case 2:
+								charOffsetY = Std.parseFloat(curCharDataFile[i]);
+							case 3:
+								tempShit = curCharDataFile[i];
+							case 4:
+								addOffset('idle', Std.parseFloat(tempShit), Std.parseFloat(curCharDataFile[i]));
+							case 5:
+								tempShit = curCharDataFile[i];
+							case 6:
+								addOffset('singUP', Std.parseFloat(tempShit), Std.parseFloat(curCharDataFile[i]));
+							case 7:
+								tempShit = curCharDataFile[i];
+							case 8:
+								addOffset('singDOWN', Std.parseFloat(tempShit), Std.parseFloat(curCharDataFile[i]));
+							case 9:
+								tempShit = curCharDataFile[i];
+							case 10:
+								addOffset('singLEFT', Std.parseFloat(tempShit), Std.parseFloat(curCharDataFile[i]));
+							case 11:
+								tempShit = curCharDataFile[i];
+							case 12:
+								addOffset('singRIGHT', Std.parseFloat(tempShit), Std.parseFloat(curCharDataFile[i]));
+							case 13:
+								if (curCharDataFile[i] == "true")
+								{
+									pushback = true;
+								}
+								else
+								{
+									pushback = false;
+								}
+							case 14:
+								pushbackType = curCharDataFile[i];
+							case 15:
+								if (pushback == true)
+								{
+									pushbackAmt = Std.parseFloat(curCharDataFile[i]);
+								}
+							case 16:
+								if (pushback == true)
+								{
+									pushbackLmt = Std.parseFloat(curCharDataFile[i]);
+								}
+						}
+						curTxt += 1;
+					}
+				}
+				curCharPath = 'characters/' + curCharacter + '/' + curCharacter;
+				tex = Paths.getSparrowAtlas(curCharPath);
 				frames = tex;
-				animation.addByPrefix('idle', 'syksalar idle', 24);
-				animation.addByPrefix('singUP', 'syksalar up', 24, false);
-				animation.addByPrefix('singDOWN', 'syksalar down', 24, false);
-				animation.addByPrefix('singLEFT', 'syksalar left', 24, false);
-				animation.addByPrefix('singRIGHT', 'syksalar right', 24, false);
-
-				addOffset('idle');
-
-				playAnim('idle');
-			case 'tommy':
-				// GIRLFRIEND CODE
-				tex = Paths.getSparrowAtlas('tommy/tommy');
-				frames = tex;
-				animation.addByPrefix('idle', 'tommy dance', 24, false);
+				animation.addByPrefix('idle', curCharacter + ' idle', 24);
+				animation.addByPrefix('singUP', curCharacter + ' singUP', 24, false);
+				animation.addByPrefix('singDOWN', curCharacter + ' singDOWN', 24, false);
+				animation.addByPrefix('singLEFT', curCharacter + ' singLEFT', 24, false);
+				animation.addByPrefix('singRIGHT', curCharacter + ' singRIGHT', 24, false);
 
 				playAnim('idle');
 		}

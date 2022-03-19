@@ -39,16 +39,21 @@ class TitleState extends MusicBeatState
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
 	var ngSpr:FlxSprite;
+	var modCred:FlxSprite;
 
 	var curWacky:Array<String> = [];
+	var modCreator:String = "Gakusei on Discord";
+	var countinShit:Int = 0;
 
 	var wackyImage:FlxSprite;
 
 	override public function create():Void
 	{
-		#if polymod
-		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
-		#end
+		var modPath = CoolUtil.coolTextFile(Paths.txt('modData'));
+		for (i in 0...modPath.length)
+		{
+			modCreator = modPath[1];
+		}
 
 		PlayerSettings.init();
 
@@ -202,6 +207,14 @@ class TitleState extends MusicBeatState
 		ngSpr.updateHitbox();
 		ngSpr.screenCenter(X);
 		ngSpr.antialiasing = true;
+
+		modCred = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('modMaker'));
+		add(modCred);
+		modCred.visible = false;
+		modCred.setGraphicSize(Std.int(modCred.width * 0.8));
+		modCred.updateHitbox();
+		modCred.screenCenter(X);
+		modCred.antialiasing = true;
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
 
@@ -364,26 +377,28 @@ class TitleState extends MusicBeatState
 		switch (curBeat)
 		{
 			case 1:
-				createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er', 'mod by MarcoXXI']);
+				createCoolText(['original game by', 'ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
 			// credTextShit.visible = true;
 			case 3:
-				addMoreText('present');
+				addMoreText('and newgrounds');
+				ngSpr.visible = true;
 			// credTextShit.text += '\npresent...';
 			// credTextShit.addText();
 			case 4:
 				deleteCoolText();
+				ngSpr.visible = false;
 			// credTextShit.visible = false;
 			// credTextShit.text = 'In association \nwith';
 			// credTextShit.screenCenter();
 			case 5:
-				createCoolText(['In association', 'with']);
+				createCoolText(['Mod', 'by']);
 			case 7:
-				addMoreText('newgrounds');
-				ngSpr.visible = true;
+				addMoreText(modCreator);
+				modCred.visible = true;
 			// credTextShit.text += '\nNewgrounds';
 			case 8:
 				deleteCoolText();
-				ngSpr.visible = false;
+				modCred.visible = false;
 			// credTextShit.visible = false;
 
 			// credTextShit.text = 'Shoutouts Tom Fulp';
@@ -420,6 +435,7 @@ class TitleState extends MusicBeatState
 		if (!skippedIntro)
 		{
 			remove(ngSpr);
+			remove(modCred);
 
 			FlxG.camera.flash(FlxColor.WHITE, 4);
 			remove(credGroup);

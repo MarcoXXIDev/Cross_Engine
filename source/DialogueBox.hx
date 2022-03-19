@@ -40,11 +40,13 @@ class DialogueBox extends FlxSpriteGroup
 
 		switch (PlayState.SONG.song.toLowerCase())
 		{
-			case 'senpai':
-				FlxG.sound.playMusic(Paths.music('Lunchbox'), 0);
-				FlxG.sound.music.fadeIn(1, 0, 0.8);
 			case 'thorns':
 				FlxG.sound.playMusic(Paths.music('LunchboxScary'), 0);
+				FlxG.sound.music.fadeIn(1, 0, 0.8);
+			case 'roses':
+
+			default:
+				FlxG.sound.playMusic(Paths.music('Lunchbox'), 0);
 				FlxG.sound.music.fadeIn(1, 0, 0.8);
 		}
 
@@ -87,6 +89,12 @@ class DialogueBox extends FlxSpriteGroup
 				var face:FlxSprite = new FlxSprite(320, 170).loadGraphic(Paths.image('weeb/spiritFaceForward'));
 				face.setGraphicSize(Std.int(face.width * 6));
 				add(face);
+			
+			default:
+				hasDialog = true;
+				box.frames = Paths.getSparrowAtlas('shared/images/speech_bubble_talking');
+				box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
+				box.animation.addByPrefix('normal', 'speech bubble normal', 24, false);
 		}
 
 		this.dialogueList = dialogueList;

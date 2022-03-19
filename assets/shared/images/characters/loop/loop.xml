@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="char.png">
+<SubTexture name="loop singDOWN0000" x="0" y="0" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop singDOWN0001" x="650" y="0" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop singDOWN0002" x="650" y="0" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop singDOWN0003" x="1300" y="0" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop singDOWN0004" x="1300" y="0" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+
+<SubTexture name="loop idle0000" x="0" y="711" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop idle0001" x="0" y="711" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop idle0002" x="0" y="711" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop idle0003" x="650" y="711" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop idle0004" x="650" y="711" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop idle0005" x="650" y="711" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop idle0006" x="650" y="711" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop idle0007" x="1300" y="711" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop idle0008" x="1300" y="711" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop idle0009" x="1300" y="711" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop idle0010" x="1300" y="711" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop idle0011" x="1300" y="711" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+
+<SubTexture name="loop singLEFT0000" x="0" y="1422" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop singLEFT0001" x="650" y="1422" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop singLEFT0002" x="650" y="1422" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop singLEFT0003" x="1300" y="1422" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop singLEFT0004" x="1300" y="1422" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+
+<SubTexture name="loop singRIGHT0000" x="0" y="2133" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop singRIGHT0001" x="650" y="2133" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop singRIGHT0002" x="650" y="2133" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop singRIGHT0003" x="1300" y="2133" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop singRIGHT0004" x="1300" y="2133" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+
+<SubTexture name="loop singUP0000" x="0" y="2844" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop singUP0001" x="650" y="2844" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop singUP0002" x="650" y="2844" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop singUP0003" x="1300" y="2844" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+<SubTexture name="loop singUP0004" x="1300" y="2844" width="650" height="711" frameX="0" frameY="0" frameWidth="650" frameHeight="711" />
+</TextureAtlas>

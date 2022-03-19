@@ -1,0 +1,44 @@
+uh hi so heres a tutorial of how to make a few stuff in this engine :)
+btw a LOT of shit has changed, and the engine is almost as easy as Modding
+Plus at this point
+
+*CUSTOM CHARACTERS*
+right now you can't add GF or BF as easily, this is just for enemies like Dad
+1. go to assets/shared/images/characters and add a folder with your character's
+name in lowercase
+2. inside that folder add the spritesheet and xml of the character, rename them
+to 'char'
+3. go to assets/preload/images/characters and add a folder with your character's
+name in lowercase again
+4. add your icon png (dimensions should be 300 x 150) and rename it to 'icons'
+5. go to assets/preload/data/characters and yet again add a folder with your
+character's name in lowercase
+6. copy + paste the char.txt file from 'test' and add it to your character's 
+folder
+7. follow the steps in the assets/preload/data/characters folder
+
+*CUSTOM SONGS*
+1. go to assets/songs and add a folder with your song name in lowercase
+(if there are anyspaces, replace the space with "-")
+2. add in the instrumental and vocals, renaming them "Inst" and "Voices" 
+respectively (files must be .ogg)
+3. go to assets/preload/data/songs and add a folder with the same name 
+as the folder you made in assets/songs
+4. copy + paste the "song-template.json" file into your own song folder
+and rename it to the folder's name
+5. copy + paste the json file and add "-hard" and "-easy" to the ends
+(if you want hard and easy difficulties)
+6. to add them in the menus, follow the "adding-songs" tutorial in the
+assets/preload/data file
+
+*GENERAL MOD THINGS*
+this part is for if yyou want to add a custom logo, menu bg, or tiny text thing
+in main menu
+**CUSTOM LOGO**
+1. 
+**CUSTOM MENU BG**
+1. 
+**TINY TEXT THING**
+1. 
+
+

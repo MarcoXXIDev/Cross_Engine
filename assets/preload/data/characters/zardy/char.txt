@@ -1,0 +1,21 @@
+0xFFBA7B42
+//whole offset
+0
+75
+//idle offset
+0
+0
+//singUP offset
+0
+114
+//singDOWN offset
+0
+0
+//singLEFT offset
+104
+0
+//singRIGHT offset
+0
+0
+//poison settings
+false

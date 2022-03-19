@@ -34,6 +34,10 @@ class MainMenuState extends MusicBeatState
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 
+	var yourModName:String = "";
+
+	var logo:FlxSprite;
+
 	override function create()
 	{
 		#if desktop
@@ -60,10 +64,17 @@ class MainMenuState extends MusicBeatState
 		bg.antialiasing = true;
 		add(bg);
 
+		logo = new FlxSprite(0, 0).loadGraphic(Paths.image('titleLogo'));
+		logo.scale.set(0.7, 0.7);
+		logo.scrollFactor.x = 0;
+		logo.scrollFactor.y = 0.24;
+		logo.x = FlxG.width - logo.width;
+		add(logo);
+
 		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
 
-		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
+		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuBGMagenta'));
 		magenta.scrollFactor.x = 0;
 		magenta.scrollFactor.y = 0.18;
 		magenta.setGraphicSize(Std.int(magenta.width * 1.1));
@@ -71,7 +82,6 @@ class MainMenuState extends MusicBeatState
 		magenta.screenCenter();
 		magenta.visible = false;
 		magenta.antialiasing = true;
-		magenta.color = 0xFFfd719b;
 		add(magenta);
 		// magenta.scrollFactor.set();
 
@@ -82,6 +92,7 @@ class MainMenuState extends MusicBeatState
 
 		for (i in 0...optionShit.length)
 		{
+			tex = Paths.getSparrowAtlas('FNF_main_menu_assets');
 			var menuItem:FlxSprite = new FlxSprite(0, 60 + (i * 160));
 			menuItem.frames = tex;
 			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
@@ -95,7 +106,12 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollow, null, 0.06);
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "Cross Engine v1", 12);
+		var modName = CoolUtil.coolTextFile(Paths.txt('modData'));
+		for (i in 0...modName.length)
+		{
+			yourModName = modName[0];
+		}
+		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "Cross Engine v2 | " + yourModName, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -188,11 +204,6 @@ class MainMenuState extends MusicBeatState
 		}
 
 		super.update(elapsed);
-
-		menuItems.forEach(function(spr:FlxSprite)
-		{
-			spr.screenCenter(X);
-		});
 	}
 
 	function changeItem(huh:Int = 0)

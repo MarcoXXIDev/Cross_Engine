@@ -60,6 +60,11 @@ class Paths
 		return getPath('data/$key.txt', TEXT, library);
 	}
 
+	inline static public function evnt(key:String, ?library:String)
+	{
+		return getPath('data/$key.evnt', TEXT, library);
+	}
+
 	inline static public function xml(key:String, ?library:String)
 	{
 		return getPath('data/$key.xml', TEXT, library);

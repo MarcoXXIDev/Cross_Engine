@@ -22,11 +22,9 @@ class Note extends FlxSprite
 	public var prevNote:Note;
 
 	public var sustainLength:Float = 0;
-	public var isSustainNote:Bool = false;
+	public var noteTypeData:Int = 0;
 
 	public var noteScore:Float = 1;
-
-	public var noteType:Int = 0;
 
 	public static var swagWidth:Float = 160 * 0.7;
 	public static var PURP_NOTE:Int = 0;
@@ -34,7 +32,7 @@ class Note extends FlxSprite
 	public static var BLUE_NOTE:Int = 1;
 	public static var RED_NOTE:Int = 3;
 
-	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false)
+	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?noteType:Int = 0)
 	{
 		super();
 
@@ -42,7 +40,7 @@ class Note extends FlxSprite
 			prevNote = this;
 
 		this.prevNote = prevNote;
-		isSustainNote = sustainNote;
+		noteTypeData = noteType;
 
 		x += 50;
 		// MAKE SURE ITS DEFINITELY OFF SCREEN?
@@ -52,6 +50,7 @@ class Note extends FlxSprite
 		this.noteData = noteData;
 
 		var daStage:String = PlayState.curStage;
+		var noteStyle:String = PlayState.noteStyle;
 
 		switch (daStage)
 		{
@@ -63,7 +62,7 @@ class Note extends FlxSprite
 				animation.add('blueScroll', [5]);
 				animation.add('purpleScroll', [4]);
 
-				if (isSustainNote)
+				if (noteTypeData == 1)
 				{
 					loadGraphic(Paths.image('weeb/pixelUI/arrowEnds'), true, 7, 6);
 
@@ -82,7 +81,7 @@ class Note extends FlxSprite
 				updateHitbox();
 
 			default:
-				frames = Paths.getSparrowAtlas('NOTE_assets');
+				frames = Paths.getSparrowAtlas("notes/" + noteStyle + "_notes");
 
 				animation.addByPrefix('greenScroll', 'green0');
 				animation.addByPrefix('redScroll', 'red0');
@@ -122,7 +121,7 @@ class Note extends FlxSprite
 
 		// trace(prevNote);
 
-		if (isSustainNote && prevNote != null)
+		if (noteTypeData == 1 && prevNote != null)
 		{
 			noteScore * 0.2;
 			alpha = 0.6;
@@ -148,7 +147,7 @@ class Note extends FlxSprite
 			if (PlayState.curStage.startsWith('school'))
 				x += 30;
 
-			if (prevNote.isSustainNote)
+			if (prevNote.noteTypeData == 1)
 			{
 				switch (prevNote.noteData)
 				{
@@ -177,7 +176,7 @@ class Note extends FlxSprite
 		{
 			// The * 0.5 is so that it's easier to hit them too late, instead of too early
 			if (strumTime > Conductor.songPosition - Conductor.safeZoneOffset
-				&& strumTime < Conductor.songPosition + (Conductor.safeZoneOffset * 0.5))
+				&& strumTime < Conductor.songPosition + (Conductor.safeZoneOffset * 0.8))
 				canBeHit = true;
 			else
 				canBeHit = false;
@@ -195,8 +194,7 @@ class Note extends FlxSprite
 
 		if (tooLate)
 		{
-			if (alpha > 0.3)
-				alpha = 0.3;
+			alpha = 0.3;
 		}
 	}
 }

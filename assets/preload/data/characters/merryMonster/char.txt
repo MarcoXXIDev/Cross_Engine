@@ -1,0 +1,25 @@
+//char healthbar color
+0xFFF3FF6E
+//whole idle offseet
+0
+75
+//offset
+0
+0
+//offset
+0
+0
+//offset
+0
+0
+//offset
+0
+0
+//ofsert
+0
+0
+//poison shit
+true
+poison
+0.016
+0.38
